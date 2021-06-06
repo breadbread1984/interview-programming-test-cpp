@@ -24,17 +24,27 @@ void down(vector<T> & v, unsigned int index, unsigned int length) {
   if (index >= length) return;
   unsigned int right_index = get_right_child(index);
   unsigned int left_index = get_left_child(index);
-  if(left_index < length && v[left_index] > v[index]) {
-    T tmp = v[index];
-    v[index] = v[left_index];
-    v[left_index] = tmp;
-    down(v, left_index, length);
+  int which_child = -1;
+  if (left_index < length && right_index < length) {
+    // both children exist, pick the one with larger value
+    if (v[left_index] > v[right_index]) which_child = left_index;
+    else which_child = right_index;
+  } else if (left_index < length) {
+    // only has left child
+    which_child = left_index;
+  } else if (right_index < length) {
+    // only has right child
+    which_child = right_index;
+  } else {
+    // no children at all
+    which_child = -1;
   }
-  if(right_index < length && v[right_index] > v[index]) {
+  if(which_child >= 0 && v[which_child] > v[index]) {
+    // need to switch with one child to maintain the max heap
     T tmp = v[index];
-    v[index] = v[right_index];
-    v[right_index] = tmp;
-    down(v, right_index, length);
+    v[index] = v[which_child];
+    v[which_child] = tmp;
+    down(v, which_child, length);
   }
 }
 

@@ -26,6 +26,9 @@ merge: merge.o
 qsort: qsort.o
 	$(CXX) $^ $(LIBS) -o ${@}
 
+radix: radix.o
+	$(CXX) $^ $(LIBS) -o ${@}
+
 select: select.o
 	$(CXX) $^ $(LIBS) -o ${@}
 
