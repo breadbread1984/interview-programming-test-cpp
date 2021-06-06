@@ -52,10 +52,12 @@ template<typename T>
 void heap(vector<T> & v) {
   for(int i = 0 ; i < v.size() - 1 ; i++) {
     if (i == 0) {
+      // update all sub tree
       for(int j = v.size() - i ; j >= 0 ; j--) {
         down(v, j, v.size() - i);
       }
     } else {
+      // only update tree at root
       down(v, 0, v.size() - i);
     }
     T tmp = v.front();
