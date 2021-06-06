@@ -41,8 +41,12 @@ void down(vector<T> & v, unsigned int index, unsigned int length) {
 template<typename T>
 void heap(vector<T> & v) {
   for(int i = 0 ; i < v.size() - 1 ; i++) {
-    for(int j = v.size() - i ; j >= 0 ; j--) {
-      down(v, j, v.size() - i);
+    if (i == 0) {
+      for(int j = v.size() - i ; j >= 0 ; j--) {
+        down(v, j, v.size() - i);
+      }
+    } else {
+      down(v, 0, v.size() - i);
     }
     T tmp = v.front();
     v.front() = v[v.size() - i - 1];
