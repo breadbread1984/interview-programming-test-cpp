@@ -8,5 +8,8 @@ all: $(EXECS)
 cut_rope: cut_rope.o
 	$(CXX) $^ $(LIBS) -o ${@}
 
+coin: coin.o
+	$(CXX) $^ $(LIBS) -o ${@}
+
 clean:
 	$(RM) $(OBJS) $(EXECS)
