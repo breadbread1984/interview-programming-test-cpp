@@ -9,7 +9,7 @@ tuple<int,vector<int>> money(int left_money) {
   if (left_money == 0) {
     return make_tuple(0, vector<int>());
   } else {
-    static vector<int> coins{1,3,5};
+    static const vector<int> coins{1,2,5};
     int min_coin_num = numeric_limits<int>::max();
     vector<int> min_coin_combination;
     for(auto & coin: coins) {
